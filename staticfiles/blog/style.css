@@ -24,6 +24,9 @@ html {
     color: #8b6c6c; 
   }
   
+.brandLogo {
+    max-width: 42px;
+}
   .content-section {
     background: #ffffff;
     padding: 10px 10px;
