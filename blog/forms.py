@@ -76,6 +76,6 @@ class CommentForm(forms.ModelForm):
 class ContactForm(forms.Form):
     name = forms.CharField(required=True,widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'your name','rows':'2' }))
     email = forms.EmailField(required=True,widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'your email', 'rows':'2'}))
-    message = forms.CharField(required=True,widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Message Max length 200', 'rows':'8'}))
+    message = forms.CharField(required=True,widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Message Max length 200', 'rows':'4'}))
 
     
