@@ -36,15 +36,7 @@ DEBUG = env('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = [env('DJANGO_ALLOWED_HOSTS')]
 
-
-
-
 # SECURITY WARNING: don't run with debug turned on in production!
-
-
-
-
-
 # Application definition
 
 INSTALLED_APPS = [
