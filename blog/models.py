@@ -89,7 +89,7 @@ class Comment(models.Model):
 class Contactus(models.Model):
     name= models.CharField(max_length=200)
     email=models.EmailField(max_length=70)
-    message = models.CharField(max_length=1000)
+    message = models.CharField(max_length=300)
 
     class Meta:
         verbose_name = 'contact us'
