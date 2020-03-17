@@ -1,5 +1,4 @@
-from django.urls import re_path, path, include
-# from django.conf.urls import url
+from django.urls import path
 from .import views
 
 app_name = 'blog'
@@ -13,6 +12,5 @@ urlpatterns = [
     path('edit_profile/', views.edit_profile, name="edit_profile"),
     path('favorites/', views.post_favorite_list, name="post_favorite_list"),
     path('about/', views.about, name="about"),
-    path('contact/', views.Contact, name='contact'),
-    
+    path('contact/', views.Contact, name='contact'),    
 ]
