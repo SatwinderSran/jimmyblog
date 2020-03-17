@@ -1,0 +1,68 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}{{ post.title }} | {{ block.super }}{% endblock %}
+
+{% block content %}
+{% include 'blog/alerts.html' %}
+
+
+<h3>{{ post.title }}</h3>
+<small>Post created by: {{ post.author }}</small>
+<hr>
+<p>{{ post.body }}</p>
+
+<div class="row gallery">
+  {% for p in post.images_set.all %}
+  {% if p.image %}
+  <div class="col-md-3">
+    <img src="{{ p.image.url }}" alt="Image Not Found" class="img-thumbnail">
+  </div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+<div class="border-top pt-3">
+  <small class="text-muted">
+    Sign In<a class="ml-2" href="{% url 'user_login' %}">Here</a> to comment,add post in Favorite and to like!
+  </small></div>
+<hr>
+<div id="like-section">
+  {% include 'blog/like_section.html' %}
+</div>
+{% if request.user.is_authenticated %}
+<div id="favorite-section">
+  {% if is_favorite %}
+  <a href="{% url 'blog:favorite_post' id=post.id %}">
+    <button class="btn btn-danger btn-sm"><i class="fas fa-heart-broken fa-sm"></i></button>
+  </a>
+  {% else %}
+  <a href="{% url 'blog:favorite_post' id=post.id %}">
+    <button class="btn btn-success btn-sm"><i class="far fa-heart fa-sm"></i></button>
+  </a>
+  {% endif %}
+
+</div>
+{% endif %}
+
+{% if post.author == request.user %}
+
+<div class="section-1" style="float:right;">
+
+  <a href="{% url 'blog:post_edit' id=post.id %}">
+    <button type="button" class="btn btn-outline-secondary">Edit <i class="fas fa-edit"></i></button>
+  </a>
+  <a href="{% url 'blog:post_delete' id=post.id %}" id="delete">
+    <button type="button" class="btn btn-danger">Delete <i class="fas fa-trash-alt"></i></button>
+  </a>
+</div>
+{% endif %}
+<br><br>
+<hr>
+
+{% if not post.restrict_comment %}
+<div class="main-comment-section">
+  {% include 'blog/comments.html' %}
+</div>
+{% endif %}
+
+{% endblock %}

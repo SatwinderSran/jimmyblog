@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+{% block title %}{{ post.title }}|Edit{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="content-section">
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4"> Edit Post</legend>
+      {{ form| crispy }}
+      {{ formset.management_form }}
+      {% for f in formset %}
+      {{ f.as_p }}
+      {% endfor %}
+    </fieldset>
+    <div class="form-group">
+      <input type="submit" value="Update" class="btn btn-success">
+    </div>
+  </form>
+</div>
+{% endblock %}
