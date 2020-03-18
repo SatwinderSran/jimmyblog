@@ -1,20 +1,16 @@
 html {
     position: relative;
     min-height: 100%;
+    font-size: calc(1em + 1vw);
   }
-  
-  /* body {
-    font-family: 'Lucida Casaul', 'Comic Sans MS';
-    font-family: 'Roboto', sans-serif;
-    margin-bottom: 160px;
-  } */
 
   body {
     background: #c5cee0;
     margin-bottom: 160px;
     color: #526e24;    
     font-family: 'Roboto', sans-serif;    
-    text-transform: capitalize;  
+    text-transform: capitalize; 
+    font-size: 20px;
     
   }
 
@@ -22,6 +18,21 @@ html {
     font-size: 12px;
     text-transform: uppercase; 
     color: #8b6c6c; 
+  }
+
+  .btn{
+    font-size: 18px;
+    padding: 10px 10px;
+  }
+  .nav-item {
+    letter-spacing: .2em;
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+  .dropdown-item {
+    font-size: 22px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
   }
   
   .content-section {
@@ -54,11 +65,12 @@ html {
   
   .footer {
     position: absolute;
+    font-size: 20px;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 130px;
-    padding: 15px;
+    height: 20px;
+    padding: 10px;
     background-color: #2C3E50;
   }
   
