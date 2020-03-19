@@ -6,39 +6,41 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse navBarSearchForm" id="navbarSupportedContent">
     <ul class="navbar-nav mx-auto">
-
-      <form class="form-inline my-1 my-sm-0  " action='{% url 'post_list' %}'>
-
+      <form class="form-inline my-1 my-sm-0" action="{% url 'post_list' %}">
         <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search" name='q'>
-        <button class="btn btn-secondary my-1 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        <button class="btn btn-secondary btn-sm my-1 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
       </form>
-
     </ul>
-    <ul class="navbar-nav mr-1 nav-item">
-      {% if request.user.is_authenticated %}
-      <li class="nav-item dropdown dropdown-item">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          {% if request.user.profile.photo %}
-          <img src="{{ request.user.profile.photo.url }}" alt="" class="navbar-img">
-          {% else %}          
-          <img src="/media/default-avatar.png" alt="" class="navbar-img">
-          {% endif %}
-          Welcome, {{ request.user|capfirst }}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'blog:edit_profile' %}">My Profile</a>
-          <a class="dropdown-item" href="{% url 'blog:post_create' %}">Post Create</a>
-          <a class="dropdown-item" href="{% url 'blog:post_favorite_list' %}">Favorite</a>
-          <a class="dropdown-item" href="{% url 'user_logout' %}">Logout <i class="fas fa-sign-out-alt"></i></a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{% url 'blog:contact' %}">Contact Us</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="{% url 'blog:about' %}">About Me</a>
-        </div>
-      </li>
+    <ul class="navbar-nav mr-1 nav-item">      
+      
+{% if request.user.is_authenticated %}
+<li class="nav-item dropdown dropdown-item">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+    aria-haspopup="true" aria-expanded="false">
+    {% if request.user.profile.photo %}
+    <img src="{{ request.user.profile.photo.url }}" alt="" class="navbar-img">
+    {% else %}          
+    <img src="/media/default-avatar.png" alt="" class="navbar-img">
+    {% endif %}
+    Welcome, {{ request.user|capfirst }}
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item" href="{% url 'blog:edit_profile' %}">My Profile</a>
+    <a class="dropdown-item" href="{% url 'blog:post_create' %}">Post Create</a>
+    <a class="dropdown-item" href="{% url 'blog:post_favorite_list' %}">Favorite</a>
+    <a class="dropdown-item" href="{% url 'user_logout' %}">Logout <i class="fas fa-sign-out-alt"></i></a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="{% url 'blog:contact' %}">Contact Us</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="{% url 'blog:about' %}">About Me</a>
+    <a class="dropdown-item" href="https://github.com/SatwinderSran?tab=repositories">My Github</a>
+    <a class="dropdown-item" href="https://www.linkedin.com/in/jimmy-sran-5414b7179 ">My Linkedin</a>
+  </div>
+</li>
+
+
       {% else %}
       <li class="nav-item">
         <a href="{% url 'user_login' %}" class="nav-link">Login <i class="fas fa-sign-in-alt"></i></a>

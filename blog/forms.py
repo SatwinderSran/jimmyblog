@@ -79,3 +79,5 @@ class ContactForm(forms.Form):
     message = forms.CharField(required=True,widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Message Max length 200', 'rows':'4'}))
 
     
+
+   
