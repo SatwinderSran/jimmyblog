@@ -253,7 +253,7 @@ def register(request):
             new_user = form.save(commit=False)
             new_user.set_password(form.cleaned_data['password'])
             new_user.save()
-            Profile.objects.create(user=new_user)
+            Profile.objects.get_or_create(user=new_user)
             return redirect('post_list')
     else:
         form = UserRegistrationForm()
@@ -269,11 +269,13 @@ def edit_profile(request):
         user_form = UserEditForm(data=request.POST or None, instance=request.user)
         profile_form = ProfileEditForm(data=request.POST or None, instance=request.user.profile, files=request.FILES)
         if user_form.is_valid() and profile_form.is_valid():
-            print(profile_form)
-            user_form.save()
-            profile_form.save()
-            return redirect('post_list')
-            # return HttpResponseRedirect(reverse("blog:edit_profile"))
+            registration = user_form.save()
+            registration.set_password(user_form.cleaned_data.get('password'))
+            profile_form = ProfileEditForm(request.POST, instance=registration.profile)
+            if profile_form.is_valid():
+                profile_form.save()
+                return redirect('post_list')
+                 # return HttpResponseRedirect(reverse("blog:edit_profile"))             
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=request.user.profile)
@@ -284,6 +286,7 @@ def edit_profile(request):
     }
     return render(request, 'blog/edit_profile.html', context)
 
+   
 
 def Contact(request):
     Contact_Form = ContactForm
