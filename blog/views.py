@@ -254,7 +254,7 @@ def register(request):
             new_user.set_password(form.cleaned_data['password'])
             new_user.save()
             Profile.objects.get_or_create(user=new_user)
-            return redirect('post_list')
+            return redirect('user_login')
     else:
         form = UserRegistrationForm()
     context = {
@@ -274,7 +274,7 @@ def edit_profile(request):
             profile_form = ProfileEditForm(request.POST, instance=registration.profile)
             if profile_form.is_valid():
                 profile_form.save()
-                return redirect('user_login')
+                return redirect('post_list')
                  # return HttpResponseRedirect(reverse("blog:edit_profile"))             
     else:
         user_form = UserEditForm(instance=request.user)
