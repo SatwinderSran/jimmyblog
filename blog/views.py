@@ -274,7 +274,7 @@ def edit_profile(request):
             profile_form = ProfileEditForm(request.POST, instance=registration.profile)
             if profile_form.is_valid():
                 profile_form.save()
-                return redirect('post_list')
+                return redirect('user_login')
                  # return HttpResponseRedirect(reverse("blog:edit_profile"))             
     else:
         user_form = UserEditForm(instance=request.user)
