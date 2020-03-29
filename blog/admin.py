@@ -27,3 +27,4 @@ admin.site.register(Contactus,MessageAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Images, ImagesAdmin)
+
